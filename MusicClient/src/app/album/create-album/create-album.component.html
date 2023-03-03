@@ -1,0 +1,44 @@
+<h1>{{editMode ? "Edit Album" : "New Album"}}</h1>
+<form class="album-form" [formGroup]="albumForm" (ngSubmit)="save()">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name"
+                placeholder="Chromatica">
+        <mat-error *ngIf="albumForm.controls.name.hasError('required')">
+            Album Name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Artist</mat-label>
+        <mat-select [(ngModel)]="selectedArtist" formControlName="artist" name="food">
+            <mat-option *ngFor="let artist of artists" [value]="artist">
+              {{artist.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="albumForm.controls.name.hasError('required')">
+            Album Artist is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Genre</mat-label>
+        <mat-select [(ngModel)]="selectedGenre" formControlName="genre" name="food">
+            <mat-option *ngFor="let genre of genres" [value]="genre">
+              {{genre.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="albumForm.controls.name.hasError('required')">
+            Album Genre is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <h2>Musics</h2>
+      <div formArrayName="musics" *ngFor="let music of getMusics().controls; let i = index">
+        <app-create-music [formControlName]="i" [index]="i" (removeMusic)="removeMusic($event)"></app-create-music>
+      </div>
+
+    <div class="form-actions">
+        <button mat-raised-button color="secondary" routerLink="../list"><mat-icon>arrow_back</mat-icon>Albums</button>
+        <button mat-raised-button color="primary" type="button" (click)="onAddMusic()">Add Music</button>
+        <button [disabled]="albumForm.invalid" mat-raised-button color="primary" type="submit">Save</button>
+        <button *ngIf="editMode" mat-raised-button color="warn" type="button" (click)="delete()">Delete</button>
+    </div>
+</form>

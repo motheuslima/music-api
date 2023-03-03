@@ -1,0 +1,16 @@
+<h1>{{editMode ? "Edit Genre" : "New Genre"}}</h1>
+<form class="genre-form" [formGroup]="genreForm" (ngSubmit)="save()">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name"
+                placeholder="Bossa Nova">
+        <mat-error *ngIf="genreForm.controls.name.hasError('required')">
+            Genre Name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <div class="form-actions">
+        <button mat-raised-button color="secondary" routerLink="../list"><mat-icon>arrow_back</mat-icon>Genres</button>
+        <button [disabled]="genreForm.invalid" mat-raised-button color="primary" type="submit">Save</button>
+        <button *ngIf="editMode" mat-raised-button color="warn" type="button" (click)="delete()">Delete</button>
+    </div>
+</form>

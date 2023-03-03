@@ -1,0 +1,11 @@
+<div class="music-form" [formGroup]="FooForm">
+    <mat-form-field>
+        <mat-label>Music Name</mat-label>
+        <input (click)="onTouched()" type="text" matInput formControlName="name"
+                placeholder="Fun Tonight">
+        <mat-error *ngIf="f['name'].hasError('required')">
+            Music Name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <button class="remove-btn" color="warn" type="button" mat-raised-button (click)="onRemoveMusic()"><mat-icon>delete</mat-icon></button>
+</div>

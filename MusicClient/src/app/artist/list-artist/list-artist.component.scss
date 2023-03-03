@@ -1,0 +1,19 @@
+.mat-column-id {
+    width: 32px;
+    border-right: 1px solid lightgray;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+tr.item:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+  

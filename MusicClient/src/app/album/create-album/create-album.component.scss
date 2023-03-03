@@ -1,0 +1,42 @@
+
+.album-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.form-actions {
+    margin-top: 10px;
+    display: flex;
+
+    > button {
+        margin-right: 10px;
+    }
+}
+
+.discography {
+    margin-top: 30px;
+
+    &-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+
+        mat-icon {
+            margin-right: 5px;
+        }
+    }
+}
+
+.genre-name {
+    font-size: small;
+    margin-left: 10px;
+}
+
+.music-name{
+    margin-left: 20px;
+}
